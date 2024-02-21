@@ -1,40 +1,37 @@
 programa {
 	funcao inicio() {
-		// Definindo as variáveis
-		real kilosMorango, kilosMaca, valorTotalMaca, valorTotalMorango, totalCompra, totalKilos, precoFinal
-		// Solicitando as variáveis
-		escreva("Digite a quantidade de kilos de maçã desejada: ")
+		// Definindo variáveis
+		real valorMaca, valorMorango,descontoMaca,descontoMorango,totalMacaDesconto,totalMorangoDesconto, kilosMorango, kilosMaca, total
+		// Solicitando variáveis
+		escreva("\nDigite a quandidade desejada de maçã em kilos: ")
 		leia(kilosMaca)
-		escreva("Digite a quantidade de kilos de morango desejada: ")
+		escreva("\nDigite a quantidade desejada de morango em kilos: ")
 		leia(kilosMorango)
-		// Definindo o valor total de cada fruta
-		se (kilosMaca <= 5) {
-			valorTotalMaca = kilosMaca * 1.80
-		} senao {
-			valorTotalMaca = kilosMaca * 1.50
+		// Calculando valor da maça e morango
+		se (kilosMaca <= 5 e kilosMorango <= 5) {
+		valorMaca = kilosMaca * 1.8  
+		valorMorango = kilosMorango * 2.5
+		total = valorMaca + valorMorango
 		}
-		//
-		se (kilosMorango <= 5) {
-			valorTotalMorango = kilosMorango * 2.50 
-		} senao {
-			valorTotalMorango = kilosMorango * 2.20
+		se (kilosMaca > 5 e kilosMaca < 8 ou kilosMorango > 5 e kilosMorango < 8) {
+		valorMaca = kilosMaca * 1.5  
+		valorMorango = kilosMorango * 2.2
+		total = valorMaca + valorMorango
 		}
-		// Calculando o valor total da compra e a quantidade total de kilos
-		totalCompra = valorTotalMorango + valorTotalMaca
-		totalKilos = kilosMaca + kilosMorango
-		// Exibindo os dados no console
-		se (totalKilos > 8 ou totalCompra > 25) {
-			escreva("\n========================================")
-			escreva("\nQuantidade de maçãs: ", kilosMaca, "kgs")
-			escreva("\nQuantidade de morangos: ", kilosMorango, "kgs")
-			escreva("\nValor final a pagar: R$", ((totalKilos * 10) / 100) * totalCompra)
-			escreva("\n=========================================", "\n")
-		} senao {
-			escreva("\n=========================================")
-			escreva("\nQuantidade de maçãs: ", kilosMaca, "kgs")
-			escreva("\nQuantidade de morangos: ", kilosMorango, "kgs")
-			escreva("\nValor final a pagar: R$", totalCompra)
-			escreva("\n=========================================", "\n")
+		se (kilosMaca >= 8 ou total == 25 ou kilosMorango >= 8) {
+		valorMaca = kilosMaca * 1.5  
+		valorMorango = kilosMorango * 2.2
+		descontoMaca = ((kilosMaca * 10) / 100) * 1.5
+ 	 	descontoMorango = ((kilosMorango * 10) / 100) * 2.2
+  	totalMorangoDesconto= valorMorango - descontoMorango
+  	totalMacaDesconto = valorMaca - descontoMaca
+  	total = totalMacaDesconto + totalMorangoDesconto
 		}
+		// Exibindo as informações na tela
+  	escreva("\n======================================")
+		escreva("\nValor da maçã: ", valorMaca, "kgs", "\n")
+		escreva("\nValor do morango:", valorMorango, "kgs", "\n")
+		escreva("\nValor total:", total, "kgs", "\n")
+  	escreva("\n======================================")
 	}
 }
